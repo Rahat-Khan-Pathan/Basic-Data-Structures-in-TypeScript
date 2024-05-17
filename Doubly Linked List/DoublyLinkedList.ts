@@ -136,7 +136,17 @@ export default class DoublyLinkedList {
         }
     };
     // complexity - O(1)
-    getSize = () => {
+    getSize = (): number => {
         return this.size;
     };
+    // complexity - O(1)
+    getHeadValue = (): number | null => {
+        if(this.head === null) return null;
+        return this.head.value;
+    }
+    // complexity - O(1)
+    getTailValue = (): number | null => {
+        if(this.tail === null) return null;
+        return this.tail.value;
+    }
 }
