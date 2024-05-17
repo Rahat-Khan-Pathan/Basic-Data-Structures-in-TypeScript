@@ -66,11 +66,14 @@ export default class SinglyLinkedList {
             this.insertAtHead(value);
             return;
         }
+        if(this.head === null) {
+            return;
+        }
         if(index === this.size) {
             this.insertAtTail(value);
             return;
         }
-        let tmp = this.head!;
+        let tmp = this.head;
         for(let i=0; i<index-1; i++) {
             if(tmp.next===null) {
                 return;
@@ -87,11 +90,14 @@ export default class SinglyLinkedList {
             this.deleteHead();
             return;
         }
+        if(this.head === null) {
+            return;
+        }
         if(index === this.size-1) {
             this.deleteTail();
             return;
         }
-        let tmp = this.head!;
+        let tmp = this.head;
         for(let i=0; i<index-1; i++) {
             if(tmp.next===null) {
                 return;
