@@ -1,20 +1,20 @@
 import DoublyLinkedList from "../Doubly Linked List/DoublyLinkedList";
 
-export default class QueueList {
-    private doublyList = new DoublyLinkedList();
+export default class QueueList<T> {
+    private doublyList = new DoublyLinkedList<T>();
     // complexity - O(1)
-    push = (value: number) => {
+    push = (value: T) => {
         this.doublyList.insertAtTail(value)
     };
     // complexity - O(1)
-    pop = (): number | null => {
+    pop = (): T | null => {
         if(this.doublyList.getSize() === 0) return null;
         const value = this.doublyList.getHeadValue();
         this.doublyList.deleteHead();
         return value;
     };
     // complexity - O(1)
-    front = (): number | null => {
+    front = (): T | null => {
         if(this.doublyList.getSize() === 0) return null;
         const value = this.doublyList.getHeadValue();
         return value;

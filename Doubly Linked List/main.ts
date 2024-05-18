@@ -1,6 +1,6 @@
 import DoublyLinkedList from "./DoublyLinkedList";
 
-const doublyList = new DoublyLinkedList();
+const doublyList = new DoublyLinkedList<number>();
 doublyList.insertAtHead(10); // 10
 doublyList.insertAtTail(20); // 10 20
 doublyList.insertAtTail(30); // 10 20 30

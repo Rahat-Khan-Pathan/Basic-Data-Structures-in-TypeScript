@@ -1,6 +1,6 @@
 import StackArray from "./StackArray";
 
-const stackArray = new StackArray();
+const stackArray = new StackArray<number>();
 stackArray.push(10); // 10
 stackArray.push(20); // 10 20
 stackArray.push(30); // 10 20 30

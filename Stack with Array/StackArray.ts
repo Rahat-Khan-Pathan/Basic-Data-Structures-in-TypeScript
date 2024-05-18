@@ -1,13 +1,13 @@
-export default class StackArray {
-    private valueArray: number[] = [];
+export default class StackArray<T> {
+    private valueArray: T[] = [];
     private size: number = 0;
     // complexity - O(1)
-    push = (value: number) => {
+    push = (value: T) => {
         this.valueArray.push(value);
         this.size++;
     };
     // complexity - O(1)
-    pop = (): number | null => {
+    pop = (): T | null => {
         if(this.size === 0) return null;
         const value = this.valueArray[this.size - 1];
         this.valueArray.pop();
@@ -15,7 +15,7 @@ export default class StackArray {
         return value;
     };
     // complexity - O(1)
-    top = (): number | null => {
+    top = (): T | null => {
         if(this.size === 0) return null;
         const value = this.valueArray[this.size - 1];
         return value;

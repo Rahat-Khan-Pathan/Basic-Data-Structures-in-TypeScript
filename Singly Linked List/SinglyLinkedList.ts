@@ -1,22 +1,22 @@
-class LinkedListNode {
-    value: number;
-    next: LinkedListNode | null;
-    constructor(value: number) {
+class LinkedListNode<T> {
+    value: T;
+    next: LinkedListNode<T> | null;
+    constructor(value: T) {
         this.value = value;
         this.next = null;
     }
 }
-export default class SinglyLinkedList {
-    private head: LinkedListNode | null = null;
-    private tail: LinkedListNode | null = null;
+export default class SinglyLinkedList<T> {
+    private head: LinkedListNode<T> | null = null;
+    private tail: LinkedListNode<T> | null = null;
     private size: number = 0;
     // complexity - O(1)
-    insertAtHead = (value: number) => {
+    insertAtHead = (value: T) => {
         if (this.head === null) {
-            this.head = new LinkedListNode(value);
+            this.head = new LinkedListNode<T>(value);
             this.tail = this.head;
         } else {
-            const newNode = new LinkedListNode(value);
+            const newNode = new LinkedListNode<T>(value);
             newNode.next = this.head;
             this.head = newNode;
         }
@@ -36,9 +36,9 @@ export default class SinglyLinkedList {
         }
     };
     // complexity - O(1)
-    insertAtTail = (value: number) => {
+    insertAtTail = (value: T) => {
         if (this.tail === null) {
-            this.head = new LinkedListNode(value);
+            this.head = new LinkedListNode<T>(value);
             this.tail = this.head;
         } else {
             const newNode = new LinkedListNode(value);
@@ -65,7 +65,7 @@ export default class SinglyLinkedList {
         this.size--;
     };
     // complexity - O(N)
-    inserAtIndex = (index: number, value: number) => {
+    inserAtIndex = (index: number, value: T) => {
         if (index === 0) {
             this.insertAtHead(value);
             return;
@@ -84,7 +84,7 @@ export default class SinglyLinkedList {
             }
             tmp = tmp.next;
         }
-        const newNode = new LinkedListNode(value);
+        const newNode = new LinkedListNode<T>(value);
         newNode.next = tmp.next;
         tmp.next = newNode;
         this.size++;
@@ -145,7 +145,7 @@ export default class SinglyLinkedList {
     };
     // complexity - O(N)
     // recursive technique
-    reverse = (curNode = this.head): LinkedListNode | null => {
+    reverse = (curNode = this.head): LinkedListNode<T> | null => {
         if (curNode === null) return null;
         if (curNode.next === null) {
             this.head = curNode;

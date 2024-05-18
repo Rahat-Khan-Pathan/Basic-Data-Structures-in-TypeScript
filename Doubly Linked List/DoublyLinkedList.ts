@@ -1,24 +1,24 @@
-class LinkedListNode {
-    value: number;
-    next: LinkedListNode | null;
-    prev: LinkedListNode | null;
-    constructor(value: number) {
+class LinkedListNode<T> {
+    value: T;
+    next: LinkedListNode<T> | null;
+    prev: LinkedListNode<T> | null;
+    constructor(value: T) {
         this.value = value;
         this.next = null;
         this.prev = null;
     }
 }
-export default class DoublyLinkedList {
-    private head: LinkedListNode | null = null;
-    private tail: LinkedListNode | null = null;
+export default class DoublyLinkedList<T> {
+    private head: LinkedListNode<T> | null = null;
+    private tail: LinkedListNode<T> | null = null;
     private size: number = 0;
     // complexity - O(1)
-    insertAtHead = (value: number) => {
+    insertAtHead = (value: T) => {
         if (this.head === null) {
-            this.head = new LinkedListNode(value);
+            this.head = new LinkedListNode<T>(value);
             this.tail = this.head;
         } else {
-            const newNode = new LinkedListNode(value);
+            const newNode = new LinkedListNode<T>(value);
             newNode.next = this.head;
             this.head.prev = newNode;
             this.head = newNode;
@@ -40,12 +40,12 @@ export default class DoublyLinkedList {
         }
     };
     // complexity - O(1)
-    insertAtTail = (value: number) => {
+    insertAtTail = (value: T) => {
         if (this.tail === null) {
-            this.head = new LinkedListNode(value);
+            this.head = new LinkedListNode<T>(value);
             this.tail = this.head;
         } else {
-            const newNode = new LinkedListNode(value);
+            const newNode = new LinkedListNode<T>(value);
             this.tail.next = newNode;
             newNode.prev = this.tail;
             this.tail = newNode;
@@ -66,7 +66,7 @@ export default class DoublyLinkedList {
         this.size--;
     };
     // complexity - O(N)
-    inserAtIndex = (index: number, value: number) => {
+    inserAtIndex = (index: number, value: T) => {
         if (index === 0) {
             this.insertAtHead(value);
             return;
@@ -85,7 +85,7 @@ export default class DoublyLinkedList {
             }
             tmp = tmp.next;
         }
-        const newNode = new LinkedListNode(value);
+        const newNode = new LinkedListNode<T>(value);
         newNode.next = tmp.next;
         if (tmp.next) tmp.next.prev = newNode;
         tmp.next = newNode;
@@ -140,12 +140,12 @@ export default class DoublyLinkedList {
         return this.size;
     };
     // complexity - O(1)
-    getHeadValue = (): number | null => {
+    getHeadValue = (): T | null => {
         if (this.head === null) return null;
         return this.head.value;
     };
     // complexity - O(1)
-    getTailValue = (): number | null => {
+    getTailValue = (): T | null => {
         if (this.tail === null) return null;
         return this.tail.value;
     };

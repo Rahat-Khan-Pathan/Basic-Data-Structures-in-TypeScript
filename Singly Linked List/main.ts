@@ -1,6 +1,6 @@
 import SinglyLinkedList from "./SinglyLinkedList";
 
-const singlyList = new SinglyLinkedList();
+const singlyList = new SinglyLinkedList<number>();
 singlyList.insertAtHead(10); // 10
 singlyList.insertAtTail(20); // 10 20
 singlyList.insertAtTail(30); // 10 20 30

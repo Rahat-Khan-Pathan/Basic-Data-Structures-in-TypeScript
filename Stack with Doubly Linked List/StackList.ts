@@ -1,20 +1,20 @@
 import DoublyLinkedList from "../Doubly Linked List/DoublyLinkedList";
 
-export default class StackList {
-    private doublyList = new DoublyLinkedList();
+export default class StackList<T> {
+    private doublyList = new DoublyLinkedList<T>();
     // complexity - O(1)
-    push = (value: number) => {
+    push = (value: T) => {
         this.doublyList.insertAtTail(value)
     };
     // complexity - O(1)
-    pop = (): number | null => {
+    pop = (): T | null => {
         if(this.doublyList.getSize() === 0) return null;
         const value = this.doublyList.getTailValue();
         this.doublyList.deleteTail();
         return value;
     };
     // complexity - O(1)
-    top = (): number | null => {
+    top = (): T | null => {
         if(this.doublyList.getSize() === 0) return null;
         const value = this.doublyList.getTailValue();
         return value;
