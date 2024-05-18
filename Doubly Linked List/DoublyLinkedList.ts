@@ -141,12 +141,38 @@ export default class DoublyLinkedList {
     };
     // complexity - O(1)
     getHeadValue = (): number | null => {
-        if(this.head === null) return null;
+        if (this.head === null) return null;
         return this.head.value;
-    }
+    };
     // complexity - O(1)
     getTailValue = (): number | null => {
-        if(this.tail === null) return null;
+        if (this.tail === null) return null;
         return this.tail.value;
-    }
+    };
+    // complexity - O(N^2)
+    // selection sort
+    sort = () => {
+        let tmp1 = this.head;
+        while (tmp1 !== null) {
+            let tmp2 = tmp1.next;
+            while (tmp2 !== null) {
+                if (tmp1.value > tmp2.value) {
+                    [tmp1.value, tmp2.value] = [tmp2.value, tmp1.value];
+                }
+                tmp2 = tmp2.next;
+            }
+            tmp1 = tmp1.next;
+        }
+    };
+    // complexity - O(N)
+    // two pointers technique
+    reverse = () => {
+        let i = this.head;
+        let j = this.tail;
+        while (i && j && i !== j && j.next !== i) {
+            [i.value, j.value] = [j.value, i.value];
+            i = i.next;
+            j = j.prev;
+        }
+    };
 }
