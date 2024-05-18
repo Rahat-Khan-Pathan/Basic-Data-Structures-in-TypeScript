@@ -1,7 +1,7 @@
 export default class SegmentTree {
     mx = 100005;
     tree: number[] = new Array(this.mx * 3).fill(0);
-
+    // Complexity - O(N)
     init = (node: number, segL: number, segR: number, a: number[]) => {
         if (segL === segR) {
             this.tree[node] = a[segL];
@@ -14,7 +14,7 @@ export default class SegmentTree {
         this.init(rightNode, mid + 1, segR, a);
         this.tree[node] = this.tree[leftNode] + this.tree[rightNode];
     };
-
+    // Complexity - O(logN)
     query = (
         node: number,
         segL: number,
@@ -32,7 +32,7 @@ export default class SegmentTree {
             this.query(rightNode, mid + 1, segR, i, j)
         );
     };
-
+    // Complexity - O(logN)
     update = (
         node: number,
         segL: number,
