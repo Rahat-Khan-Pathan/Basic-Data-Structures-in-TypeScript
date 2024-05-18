@@ -129,31 +129,31 @@ export default class SinglyLinkedList {
         return this.size;
     };
     // complexity - O(N^2)
-    sort = ()=> {
+    // selection sort
+    sort = () => {
         let tmp1 = this.head;
-        while(tmp1 !== null)
-            {
-                let tmp2 = tmp1.next;
-                while(tmp2 !== null)
-                    {
-                        if(tmp1.value > tmp2.value) {
-                            [tmp1.value, tmp2.value] = [tmp2.value, tmp1.value]
-                        }
-                        tmp2 = tmp2.next;
-                    }
-                tmp1=tmp1.next;
+        while (tmp1 !== null) {
+            let tmp2 = tmp1.next;
+            while (tmp2 !== null) {
+                if (tmp1.value > tmp2.value) {
+                    [tmp1.value, tmp2.value] = [tmp2.value, tmp1.value];
+                }
+                tmp2 = tmp2.next;
             }
-    }
+            tmp1 = tmp1.next;
+        }
+    };
     // complexity - O(N)
+    // recursive technique
     reverse = (curNode = this.head): LinkedListNode | null => {
-        if(curNode === null) return null;
-        if(curNode.next === null) {
+        if (curNode === null) return null;
+        if (curNode.next === null) {
             this.head = curNode;
             return curNode;
         }
         const nextNode = this.reverse(curNode.next);
-        if(nextNode) nextNode.next = curNode;
+        if (nextNode) nextNode.next = curNode;
         curNode.next = null;
         return curNode;
-    }
+    };
 }
