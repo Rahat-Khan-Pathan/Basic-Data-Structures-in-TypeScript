@@ -1,5 +1,6 @@
 export default class MaxHeap<T> {
     private valueArray: T[] = [];
+    // complexity - O(logN)
     push = (value: T) => {
         this.valueArray.push(value);
         let curIdx = this.valueArray.length -1;
@@ -14,6 +15,7 @@ export default class MaxHeap<T> {
             curIdx = parIdx;
         }
     } 
+    // complexity - O(logN)
     pop = ()=> {
         this.valueArray[0] = this.valueArray[this.valueArray.length - 1];
         this.valueArray.pop();
@@ -59,6 +61,7 @@ export default class MaxHeap<T> {
             }
         }
     }
+    // complexity - O(1)
     top = (): T | null => {
         if(this.valueArray.length === 0) return null;
         return this.valueArray[0];

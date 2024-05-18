@@ -12,6 +12,7 @@ class TreeNode<T> {
 }
 export default class BinarySearchTree<T> {
     private root: TreeNode<T> | null = null;
+    // complexity - O(N)
     convertToBST = (
         inputArray: T[],
         l: number = 0,
@@ -29,10 +30,12 @@ export default class BinarySearchTree<T> {
         curRoot.right = rightNode;
         return curRoot;
     };
+    // complexity - O(NlogN)
     inputBST = (inputArray: T[])=> {
         inputArray.sort();
         this.convertToBST(inputArray);
     }
+    // complexity - O(N)
     printLevelOrder = () => {
         if (this.root === null) return;
         const queue = new QueueList<TreeNode<T>>();
@@ -46,6 +49,7 @@ export default class BinarySearchTree<T> {
             if (par.right) queue.push(par.right);
         }
     };
+    // complexity - O(log(N))
     findNode = (value: T, curNode: TreeNode<T> | null = this.root): boolean => {
         if (curNode === null) return false;
         if (curNode.value === value) return true;

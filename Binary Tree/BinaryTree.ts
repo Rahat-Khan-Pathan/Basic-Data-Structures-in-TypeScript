@@ -12,6 +12,7 @@ class TreeNode<T> {
 }
 export default class BinaryTree<T> {
     private root: TreeNode<T> | null = null;
+    // complexity - O(N)
     inputLevelOrder = (inputArray: T[]) => {
         if (inputArray.length > 0) {
             this.root = new TreeNode<T>(inputArray[0]);
@@ -34,6 +35,7 @@ export default class BinaryTree<T> {
             queue.push(curNode.right);
         }
     };
+    // complexity - O(N)
     printLevelOrder = () => {
         if (this.root === null) return;
         const queue = new QueueList<TreeNode<T>>();
@@ -47,24 +49,28 @@ export default class BinaryTree<T> {
             if (par.right) queue.push(par.right);
         }
     };
+    // complexity - O(N)
     printPreOrder = (curNode: TreeNode<T> | null = this.root) => {
         if (curNode === null) return;
         console.log(curNode.value);
         this.printPreOrder(curNode.left);
         this.printPreOrder(curNode.right);
     };
+    // complexity - O(N)
     printPostOrder = (curNode: TreeNode<T> | null = this.root) => {
         if (curNode === null) return;
         this.printPostOrder(curNode.left);
         this.printPostOrder(curNode.right);
         console.log(curNode.value);
     };
+    // complexity - O(N)
     printInOrder = (curNode: TreeNode<T> | null = this.root) => {
         if (curNode === null) return;
         this.printInOrder(curNode.left);
         console.log(curNode.value);
         this.printInOrder(curNode.right);
     };
+    // complexity - O(N)
     printLeafNodes = (curNode: TreeNode<T> | null = this.root) => {
         if (curNode === null) return;
         if (curNode.left === null && curNode.right === null) {
@@ -73,12 +79,14 @@ export default class BinaryTree<T> {
         this.printLeafNodes(curNode.left);
         this.printLeafNodes(curNode.right);
     };
+    // complexity - O(N)
     countNodes = (curNode: TreeNode<T> | null = this.root): number => {
         if (curNode === null) return 0;
         return (
             this.countNodes(curNode.left) + this.countNodes(curNode.right) + 1
         );
     };
+    // complexity - O(N)
     maxHeight = (curNode: TreeNode<T> | null = this.root): number => {
         if (curNode === null) return 0;
         return (
@@ -88,6 +96,7 @@ export default class BinaryTree<T> {
             ) + 1
         );
     };
+    // complexity - O(N)
     findNode = (value: T, curNode: TreeNode<T> | null = this.root): boolean => {
         if (curNode === null) return false;
         if (curNode.value === value) return true;
